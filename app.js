@@ -6,8 +6,11 @@
  *
  */
 
- //Establish environment
- if(process.env.NODE_ENV !== "production") require("dotenv").config();
+//Variables
+const port = process.env.PORT || 8000;
+
+//Establish environment
+require("dotenv").config();
 
 //Dependencies
 const express = require("express"); //express
@@ -41,9 +44,6 @@ app.use(session({
     resave: true,
 })) 
 
-
-//Variables
-const port = process.env.PORT;
 
 
 //Uses json parser
