@@ -20,7 +20,7 @@ class DBConnection {
     }
 
     connect () {
-        mongoose.connect(this.db_url.toString(), this.config, (err) => {
+        mongoose.connect(this.db_url, this.config, (err) => {
              if(err) console.log(err.message) //Log this later
              else console.log("Successfully connected to data base");
         })
