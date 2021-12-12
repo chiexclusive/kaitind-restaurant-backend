@@ -8,7 +8,7 @@
 //Dependencies
 const express = require("express"); //Express
 const admin = express.Router();//Router
-const AdminController = require("../controllers/adminController.js");//Admin controller
+const AdminController = require("../controllers/AdminController.js");//Admin controller
 const BaseController = require("../controllers/BaseController.js");
 const {formidableMiddleWare} = require("./../helpers/middleWares.js");
 
