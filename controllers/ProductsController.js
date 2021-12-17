@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt"); //Bcrypt
 const ProductsModel = require("./../models/ProductsModel.js");//User Database
 const UsersModel = require("./../models/UsersModel.js");//User Database
 const OrdersModel = require("./../models/ordersModel.js");//User Database
-const fs = require("fs"); //File system
 const {cartFetchSchema,} = require("./../schemas/validationSchema.js");
 const BaseController = require("./BaseController.js")
 const MailController = require("./MailController")

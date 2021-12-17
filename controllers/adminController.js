@@ -18,8 +18,8 @@ class AdminController extends BaseController{
         super(req);
         this.req =  req;
         this.data = ("body" in req) ? req.body : "";
-        this.BASE_PRODUCT_STORAGE_URL = __dirname + "/./../frontend/public/storage/images/products/",
-        this.BASE_SLIDESHOW_IMAGES_URL = __dirname + "/./../frontend/public/storage/images/slideshow/"
+        this.BASE_PRODUCT_STORAGE_URL = __dirname + "/./../storage/images/products/",
+        this.BASE_SLIDESHOW_IMAGES_URL = __dirname + "/./../storage/images/slideshow/"
     }
 
 
@@ -394,7 +394,7 @@ class AdminController extends BaseController{
                         if(err) console.log(err)
                         else{
                             try{
-                                src = "/frontend/public/storage/images/slideshow/"+name;
+                                src = "/storage/images/slideshow/"+name;
                                 slideshow.addSlide({name, src})
                                 .then((result) => {
                                     x++

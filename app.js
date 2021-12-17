@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 })
 
 //Expose front end storage
-app.use("/frontend", express.static("frontend"))
+app.use("/storage", express.static("storage"))
 
 
 //Admin router
