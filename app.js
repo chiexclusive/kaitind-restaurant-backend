@@ -22,6 +22,7 @@ const products = require("./routes/productsRoute.js") //Products route
 const cors = require ("cors"); //Cross Site Resource Sharing
 const db = require ("./helpers/dbConnection.js"); //Get data base connection from helpers
 const session = require("express-session"); //Session
+const MongoStore = require('connect-mongo'); //Session store
 
 
 
@@ -38,6 +39,13 @@ app.use(cors({
 
 const TWO_DAYS = 2 * 1000 * 60 * 60 * 24 //Duration in milliseconds
 app.use(session({
+	store: MongoStore.create({
+
+	    mongoUrl: process.env.DB_URL,
+	    ttl: 14 * 24 * 60 * 60, // = 14 days. Default
+	    autoRemove: 'native', // Default
+
+	}),
     secret: "process.env.SESSION_SECRET", 
     saveUninitialized: false,
     cookie: {maxAge: TWO_DAYS, secure: false, httpOnly: false},
