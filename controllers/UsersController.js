@@ -156,6 +156,7 @@ class UsersController extends BaseController {
 
 
 			if(this.req._parsedUrl.pathname == "/login"){
+
 				const users = new UsersModel();
 	            users.getUserByEmail(this.req.body.Email)
 	            .then(async (res) => {
@@ -172,9 +173,14 @@ class UsersController extends BaseController {
 	            			.catch((err) => {
 	            				reject({code: 500, message: "Unidentified Error. Try Again"})
 	            			})
+	            		}else{
+	            			return (reject({code: 400, message: "Email or Password is incorrect"}));console.log("error")
 	            		}
 	            	})
-	        	}) 
+	        	})
+	        	.catch((err) => {
+	        		reject({code: 500, message: "Unidentified Error. Try Again"})
+	        	})
 			}
 
 

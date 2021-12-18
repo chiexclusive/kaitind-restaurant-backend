@@ -169,13 +169,13 @@ class AdminController extends BaseController{
 
                 //Store food images
                 var file = this.req.files;
-                const oldPath = file.productImage.path;
-                const newPath = this.BASE_PRODUCT_STORAGE_URL + file.productImage.name;
+                const oldPath = file.productImage.filepath;
+                const newPath = this.BASE_PRODUCT_STORAGE_URL + file.productImage.originalFilename;
                 fs.rename(oldPath, newPath, (err) => {
                     if(err) reject({code: 500, message: "Unidentified Error"});
                     else{
                         //Store the product information
-                        this.data['foodImage'] = file.productImage.name;
+                        this.data['foodImage'] = file.productImage.originalFilename;
                         this.data['isOpen'] = true;
                         const products = new ProductsModel();
                         products.createProduct(this.data)
@@ -377,9 +377,9 @@ class AdminController extends BaseController{
                 var slideshow = new SlideShowModel();
                 for(var file in this.req.files){
                     let item = this.req.files[file]
-                    let name = item.name;
+                    let name = item.originalFilename;
                     name = name.replace(/\s/g, "");
-                    let path = item.path;
+                    let path = item.filepath;
                     var src = this.BASE_SLIDESHOW_IMAGES_URL+name;
                     var list = []
 
